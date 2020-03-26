@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #rootbody {
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        #logo {
+            margin-top: 60px;
+        }
+
+        #inputarea {
+            position: relative;
+            width: 580px;
+            height: 38px;
+            margin: 0 auto;
+            margin-top: 48px;
+        }
+
+        #edit {
+            height: 38px;
+            border: 1px solid #3385ff;
+            box-sizing: border-box;
+        }
+
+        #edit:hover {
+            border: 1px solid #317ef3;
+        }
+
+        #inputtext {
+            border: 0; /* 所有的表单边框为0 */
+            outline: none; /*去除选中样式*/
+            background-color: white;
+            height: 36px;
+            float: left;
+            width: 470px;
+            box-sizing: border-box;
+            padding-left: 10px;
+            vertical-align: middle;
+            font-size: 17px;
+        }
+
+        #baidu {
+            width: 90px;
+            background: #3385ff;
+            height: 36px;
+            color: white;
+            line-height: 36px;
+            box-sizing: border-box;
+            float: right;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        #baidu :hover{
+            background: #317ef3;
+        }
+
+        .list {
+            position: absolute;
+            top: 38px;
+            left: 0px;
+            width: 487px;
+            border: 1px solid #a6a6a6;
+            border-top: none;
+            display: none;
+        }
+
+        .ulstyle {
+            list-style: none;
+            text-align: left;
+        }
+
+        .listyle {
+            text-align: left;
+            color: #4986f7;
+            font-size: 15px;
+            line-height: 35px;
+            padding-left: 10px;
+            /*强制一行*/
+            white-space: nowrap;
+            /*超出隐藏*/
+            overflow: hidden;
+            /*超出 部分省略号*/
+            text-overflow: ellipsis;
+            cursor: pointer;
+            vertical-align: middle;
+
+        }
+
+        li span {
+            font-weight: 800;
+            color: #aa9301;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div id="rootbody">
+    <img id="logo" width="279" height="128" src="http://www.baidu.com/img/bd_logo1.png">
+    <div id="inputarea">
+        <div id="edit">
+            <input id="inputtext" type="text" placeholder="请输入"/>
+            <p id="baidu">模糊查找</p>
+        </div>
+        <div id="list" class="list">
+            <ul class="ulstyle">
+                <li class="listyle"><span>ee</span>reqwrew</li>
+                <li class="listyle">456</li>
+                <li class="listyle">789</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    var inputtext = document.getElementById("inputtext")
+    var list = document.getElementById("list")
+    inputtext.oninput = function () {
+        var ul = document.createElement('ul')
+        ul.className = 'ulstyle'
+        var linecout = inputtext.value.length;
+        if (linecout === 0) {
+            list.style.display = 'none'
+            return;
+        }
+        list.style.display = 'block'
+        if (linecout > 10) {
+            linecout = 10;
+        }
+        var height = 0;
+        for (var i = 0; i < linecout; i++) {
+            var li = document.createElement('li')
+            li.className = 'listyle'
+            li.innerHTML = "<span>" + inputtext.value + "</span>测试"+i
+            ul.appendChild(li)
+            height = height + 36
+            li.onmouseover=overMouse
+            li.onmouseout=outMouse
+            li.onclick=clickliListItem
+        }
+        list.style.height = height + "px";
+        if (list.children.length > 0) {
+            list.replaceChild(ul, list.children[0])
+        } else {
+            list.appendChild(ul)
+        }
+    }
+
+
+    function clickliListItem() {
+        inputtext.value= this.textContent
+    }
+    function overMouse() {
+        this.style.background = '#eaeaea'
+    }
+
+    function outMouse() {
+        this.style.background = 'white'
+    }
+</script>
+</body>
+</html>
