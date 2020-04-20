@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>黑金会员</title>
+    <style>
+        html, body, img, a, p, div, input {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        div {
+            height: 100%;
+            width: 100%;
+        }
+
+        #margintop {
+            width: 100%;
+            height: 100px;
+            background: #ffcb70;
+            position: absolute;
+            top: 0px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app"><img width="100%" src="https://static4.laiyifen.com/files/guide/image/1579075977863_9852.jpg">
+    <img width="100%" src="https://static4.laiyifen.com/files/guide/image/1579075977863_9852.jpg">
+    <img width="100%" src="https://static4.laiyifen.com/files/guide/image/1579075977863_9852.jpg">
+    <div id="margintop">悬浮块</div>
+</div>
+<script>
+    function appMessage(obj) {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('android') > -1 || u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid) {
+            console.log(JSON.stringify(obj));
+            str = String(JSON.stringify(obj));
+            //android用的是对象转json转String   mobileAPI为原生注册的  addJavascriptInterface(javaToH5Api, "mobileAPI");
+            window.mobileAPI.postMessage(str);
+        } else if (isiOS) {
+            //ios的用的是对象
+            window.webkit.messageHandlers.mobileAPI.postMessage(obj);
+        }
+    };
+
+
+    var message = {
+        'function': 'setNavigationInfo',
+        'param': {
+            //右边icon 链接
+            'righticon_url': 'https://static4.laiyifen.com/files/guide/image/1582008245704_6258.png',
+            //右边icon 点击跳转链接
+            'righticon_link': 'https://www.baidu.com',
+            //导航栏上滑动后的颜色，开始默认透明
+            'titlebarbgcolor': '#2A2625',
+            //gone /visible 标题是否隐藏
+            'titledisplay': 'visible',
+        },
+        'callback': 'callresult',
+    };
+
+    function callresult(result) {
+        alert(result);
+        //返回原生导航高度
+        document.getElementById('margintop').style.top = result + "rem"
+    }
+
+    appMessage(message);
+
+
+    setTimeout(function () {
+        var message2 = {
+            'function': 'getNavigationHeight',
+            'callback': 'callresult',
+        };
+        // appMessage(message2);
+    }, 200);
+
+
+    // document.getElementById('margintop').style.top=10+"px"
+
+
+</script>
+</body>
+</html>
