@@ -16,8 +16,8 @@
 <body>
 <input id="share" type="button" value="share">
 <input id="setShareContent" type="button" value="setShareContent">
-<input id="setShareContent2" type="button" value="setShareContent2">
-<input id="storgeQRcode" type="button" value="storgeQRcode(链接方式)">
+<input id="setShareContent2" type="button" value="setShareContent(指定渠道）">
+<input id="storgeQRcode" type="button" value="storgeQRcode(链接方式)保存图片到本地">
 <IMG  id="imgtest" src="https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg">
 <!--<input id="storgeQRcode2" type="button" value="storgeQRcode(图片方式)">-->
 
@@ -50,9 +50,6 @@
                 'miniProgramPage': '/pages/detail/index?id=3000000000000126&mpId=1009090701000015'
             },
             'callback': 'callresult',
-            // 'callback': function (result) {
-            //     alert(this.test+'结果：'+result);
-            // },
         };
         appMessage(message);
     }
@@ -96,8 +93,8 @@
           }
           appMessage(storgeQRcode);
       });
-
    }
+
    document.getElementById('storgeQRcode2').onclick= function () {
       var ext= getImageBase64(document.getElementById('imgtest'), 'jpg' );
        var storgeQRcode = {
@@ -129,17 +126,6 @@
         var dataURL = canvas.toDataURL("image/" + ext);  //返回的是一串Base64编码的URL并指定格式
         canvas = null; //释放
         return dataURL;
-        //
-        // var canvas=document.getElementById("canvas"),//获取canvas
-        //     ctx = canvas.getContext("2d"), //对应的CanvasRenderingContext2D对象(画笔)
-        //     img = new Image(),//创建新的图片对象
-        //     base64 = '' ;//base64
-        // img.src = 'http://www.xxxx.png';
-        // img.setAttribute("crossOrigin",'Anonymous')
-        // img.onload = function(){//图片加载完，再draw 和 toDataURL
-        //     ctx.drawImage(img,0,0);
-        //     base64 = canvas.toDataURL("image/png");
-        // };
     }
 
     /**
