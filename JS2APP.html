@@ -48,6 +48,7 @@ var _hmt = _hmt || [];
                 'miniProgramPage': '/pages/detail/index?id=3000000000000126&mpId=1009090701000015'
             },
             'callback': 'callresult',
+            "shareSelectItem": "shareSelectItem"
         };
         appMessage(message);
     }
@@ -61,7 +62,8 @@ var _hmt = _hmt || [];
                 "url160x160": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg",
                 "pic": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg"
             },
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem"
         }
         appMessage(setShareContent);
     }
@@ -76,7 +78,8 @@ var _hmt = _hmt || [];
                 "channel": ["IM", "Poster", "WechatMoments", "Wechat", "QQ", "QZone"],
                 "sharePicUrl": "https://static.laiyifen.com/goods-static/images/offlineShare.png"
             },
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem"
         }
         appMessage(setShareContent2);
     }
@@ -87,7 +90,8 @@ var _hmt = _hmt || [];
                 "function": "storgeQRcode", "param": {
                     "imgUrl": base64 ,
                 },
-                "callback": "callresult"
+                "callback": "callresult",
+            "shareSelectItem": "shareSelectItem"
             }
             appMessage(storgeQRcode);
         });
@@ -99,7 +103,8 @@ var _hmt = _hmt || [];
             "function": "storgeQRcode", "param": {
                 "imgUrl":  ext,
             },
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem"
         }
         appMessage(storgeQRcode);
     }
@@ -113,7 +118,9 @@ var _hmt = _hmt || [];
             },
             //结果回调，{"code":"1","data":"lyfcode"}
             // code==1 成功返回，code ==2 用户拒绝, code==-1 非法appid
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem"
+
         }
         appMessage(getLyfCode);
     }
@@ -121,6 +128,10 @@ var _hmt = _hmt || [];
 
     function callresult(result) {
         alert('结果：'+result);
+    }
+
+    function shareSelectItem(result) {
+        alert('渠道：'+result);
     }
 
     /**
