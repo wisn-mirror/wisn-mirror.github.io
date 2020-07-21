@@ -12,15 +12,6 @@
             margin: 4px;
         }
     </style>
-    <script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?41cc1334afa3eded19a39d7628ed3a01";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </head>
 <body>
 <input id="share" type="button" value="share">
@@ -29,11 +20,100 @@ var _hmt = _hmt || [];
 <input id="storgeQRcode" type="button" value="storgeQRcode(链接方式)保存图片到本地">
 <input id="storgeQRcode2" type="button" value="storgeQRcode2保存图片到本地">
 <input id="getLyfCode" type="button" value="getLyfCode(来伊份授权登录)">
+<input id="getLyfCode1" type="button" value="getLyfCode(来伊份授权登录 无效)">
 <IMG  id="imgtest" src="https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg">
+<input id="hideTitleBar" type="button" value="隐藏显示原生头">
+<input id="getTitleBarTopHeight" type="button" value="获取原生电池状态栏高度，返回">
+<input id="finishWebview" type="button" value="结束当前webview">
+<input id="selectContact" type="button" value="获取通讯录，处理权限，选择并回调 手机号，姓名">
+<input id="isExistContact" type="button" value="查询手机号是否在通讯录中，处理权限，结果回调 是否存在">
+<input id="jumpIMGroup" type="button" value="提供群id,原生跳转群页面">
+<input id="hideShare" type="button" value="隐藏分享图标，右边直接为叉按钮">
+<input id="backGroundEvent" type="button" value="App回到后台或前台事件接口">
+<input id="getDeviceInfo" type="button" value="获取App设备信息（手机品牌，型号，屏幕宽高">
 <!--<input id="storgeQRcode2" type="button" value="storgeQRcode(图片方式)">-->
+<!--原生给H5提供方法：
+1. 隐藏显示原生头
+2. 获取原生电池状态栏高度，返回
+3. 结束当前webview
+4. 获取通讯录，处理权限，选择并回调
+5. 查询手机号是否在通讯录中，处理权限，结果回调
+6. 提供群id,原生跳转群页面
+7. 隐藏分享图标，右边直接为叉按钮
+8. App回到后台或前台事件接口
+9. 获取App设备信息（手机品牌，型号，屏幕宽高）-->
 
 <script type="text/javascript">
+    document.getElementById('hideTitleBar').onclick= function () {
+        var message = {
+            'function': 'hideTitleBar',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('getTitleBarTopHeight').onclick= function () {
+        var message = {
+            'function': 'getTitleBarTopHeight',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('finishWebview').onclick= function () {
+        var message = {
+            'function': 'finishWebview',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('selectContact').onclick= function () {
+        var message = {
+            'function': 'selectContact',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('isExistContact').onclick= function () {
+        var message = {
+            'function': 'isExistContact',
+            'param': {
+                'phone': '15038267031'
+            },
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('jumpIMGroup').onclick= function () {
+        var message = {
+            'function': 'jumpIMGroup',
+            'param': {
+                'groupid': '1234567'
+            },
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('hideShare').onclick= function () {
+        var message = {
+            'function': 'hideShare',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('backGroundEvent').onclick= function () {
+        var message = {
+            'function': 'backGroundEvent',
+            'callback': 'callresult',
+        };
 
+        appMessage(message);
+    }
+    document.getElementById('getDeviceInfo').onclick= function () {
+        var message = {
+            'function': 'getDeviceInfo',
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
     document.getElementById('share').onclick= function () {
         var message = {
             'function': 'share',
@@ -43,18 +123,11 @@ var _hmt = _hmt || [];
                 'description': '巴旦木酥饼（原味）220g',
                 'url160x160': 'https://static2.laiyifen.com/files/product/image/1553657709810_3777.jpg',
                 'pic': 'https://static2.laiyifen.com/files/product/image/1553657709810_3777.jpg',
-                'isMiniProgram': true,//是否分享小程序 ,非必传
-                'originalId': 'gh_4a4a36db4c12',//小程序id,非必传
-                'miniProgramPage': '/pages/detail/index?id=3000000000000126&mpId=1009090701000015'//小程序路径,非必传
-                 posterUrl = @"";//海报跳转链接,非必传
-   isSharePhoto:true;  //是否分享图片,非必传
-    photoUrl: "";   //海报的图片链接,非必传
-            photoBaseData = "" ;//图片的base64值，如果分享渠道有保存图片，该字段必传
-    //分享平台,非必传
-    channel = ["WechatMoments","Wechat","QQ","QZone","ShortMessage","IM","Poster","SavePoster"];//分享平台 可选参数
+                'isMiniProgram': true,
+                'originalId': 'gh_4a4a36db4c12',
+                'miniProgramPage': '/pages/detail/index?id=3000000000000126&mpId=1009090701000015'
             },
-            'callback': 'callresult', //分享回调 ,非必传
-            "shareSelectItem": "shareSelectItem"//分享面板的渠道点击回调,非必传
+            'callback': 'callresult',
         };
         appMessage(message);
     }
@@ -68,8 +141,7 @@ var _hmt = _hmt || [];
                 "url160x160": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg",
                 "pic": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg"
             },
-            "callback": "callresult",
-            "shareSelectItem": "shareSelectItem"
+            "callback": "callresult"
         }
         appMessage(setShareContent);
     }
@@ -84,8 +156,7 @@ var _hmt = _hmt || [];
                 "channel": ["IM", "Poster", "WechatMoments", "Wechat", "QQ", "QZone"],
                 "sharePicUrl": "https://static.laiyifen.com/goods-static/images/offlineShare.png"
             },
-            "callback": "callresult",
-            "shareSelectItem": "shareSelectItem"
+            "callback": "callresult"
         }
         appMessage(setShareContent2);
     }
@@ -96,8 +167,7 @@ var _hmt = _hmt || [];
                 "function": "storgeQRcode", "param": {
                     "imgUrl": base64 ,
                 },
-                "callback": "callresult",
-            "shareSelectItem": "shareSelectItem"
+                "callback": "callresult"
             }
             appMessage(storgeQRcode);
         });
@@ -109,8 +179,7 @@ var _hmt = _hmt || [];
             "function": "storgeQRcode", "param": {
                 "imgUrl":  ext,
             },
-            "callback": "callresult",
-            "shareSelectItem": "shareSelectItem"
+            "callback": "callresult"
         }
         appMessage(storgeQRcode);
     }
@@ -120,13 +189,32 @@ var _hmt = _hmt || [];
             "function": "getLyfCode",
             "param": {
                 //appid
-                "appid": "123456789qwer2345",
+                "appid": "46B8461B15104819B8C89CEE1FE3DAE2",
             },
             //结果回调，{"code":"1","data":"lyfcode"}
-            // code==1 成功返回，code ==2 用户拒绝, code==-1 非法appid
-            "callback": "callresult",
-            "shareSelectItem": "shareSelectItem"
-
+            // code==1 成功返回，
+            // code ==2 用户拒绝,
+            // code==-1 非法appid（无效的授权商户）
+            // code==-2 参数错误
+            // code==-3 服务器错误
+            "callback": "callresult"
+        }
+        appMessage(getLyfCode);
+    }
+    document.getElementById('getLyfCode1').onclick= function () {
+        var getLyfCode = {
+            "function": "getLyfCode",
+            "param": {
+                //appid
+                "appid": "abc",
+            },
+            //结果回调，{"code":"1","data":"lyfcode"}
+            // code==1 成功返回，
+            // code ==2 用户拒绝,
+            // code==-1 非法appid（无效的授权商户）
+            // code==-2 参数错误
+            // code==-3 服务器错误
+            "callback": "callresult"
         }
         appMessage(getLyfCode);
     }
@@ -134,10 +222,6 @@ var _hmt = _hmt || [];
 
     function callresult(result) {
         alert('结果：'+result);
-    }
-
-    function shareSelectItem(result) {
-        alert('渠道：'+result);
     }
 
     /**
