@@ -265,7 +265,7 @@
 
 
     function callresult(result) {
-        alert('结果：'+result.toString());
+        alert('结果：'+json2str(result));
     }
 
     /**
@@ -321,6 +321,19 @@
             window.webkit.messageHandlers.mobileAPI.postMessage(obj);
         }
     };
+
+    /**
+     * json对象转字符串形式
+     */
+    function json2str(o) {
+        var arr = [];
+        var fmt = function(s) {
+            if (typeof s == 'object' && s != null) return json2str(s);
+            return /^(string|number)$/.test(typeof s) ? "'" + s + "'" : s;
+        }
+        for (var i in o) arr.push("'" + i + "':" + fmt(o[i]));
+        return '{' + arr.join(',') + '}';
+    }
 </script>
 </body>
 </html>
