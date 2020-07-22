@@ -27,6 +27,7 @@
 <input id="getTitleBarTopHeight" type="button" value="获取原生电池状态栏高度，返回">
 <input id="finishWebview" type="button" value="结束当前webview">
 <input id="selectContact" type="button" value="获取通讯录，处理权限，选择并回调 手机号，姓名">
+<input id="isExistContactinput" type="text" value="15038267031">
 <input id="isExistContact" type="button" value="查询手机号是否在通讯录中，处理权限，结果回调 是否存在">
 <input id="jumpIMGroup" type="button" value="提供群id,原生跳转群页面">
 <input id="hideShare01" type="button" value="隐藏分享图标，右边直接为叉按钮 隐藏">
@@ -95,13 +96,15 @@
         appMessage(message);
     }
     document.getElementById('isExistContact').onclick= function () {
+        var input_text=document.getElementById('isExistContactinput');
         var message = {
             'function': 'isExistContact',
             'param': {
-                'phone': '15038267031'
+                'phone': input_text.value
             },
             'callback': 'callresult',
         };
+        console.log(JSON.stringify(message));
         // 返回 true/false
         appMessage(message);
     }
