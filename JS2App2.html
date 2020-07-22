@@ -22,7 +22,8 @@
 <input id="getLyfCode" type="button" value="getLyfCode(来伊份授权登录)">
 <input id="getLyfCode1" type="button" value="getLyfCode(来伊份授权登录 无效)">
 <IMG  id="imgtest" src="https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg">
-<input id="hideTitleBar" type="button" value="隐藏显示原生头">
+<input id="hideTitleBar01" type="button" value="隐藏显示原生头 隐藏">
+<input id="hideTitleBar02" type="button" value="隐藏显示原生头 显示">
 <input id="getTitleBarTopHeight" type="button" value="获取原生电池状态栏高度，返回">
 <input id="finishWebview" type="button" value="结束当前webview">
 <input id="selectContact" type="button" value="获取通讯录，处理权限，选择并回调 手机号，姓名">
@@ -45,9 +46,22 @@
 9. 获取App设备信息（手机品牌，型号，屏幕宽高）-->
 
 <script type="text/javascript">
-    document.getElementById('hideTitleBar').onclick= function () {
+    document.getElementById('hideTitleBar01').onclick= function () {
         var message = {
             'function': 'hideTitleBar',
+            'param': {
+                'hide': true
+            },
+            'callback': 'callresult',
+        };
+        appMessage(message);
+    }
+    document.getElementById('hideTitleBar01').onclick= function () {
+        var message = {
+            'function': 'hideTitleBar',
+            'param': {
+                'hide': false
+            },
             'callback': 'callresult',
         };
         appMessage(message);
