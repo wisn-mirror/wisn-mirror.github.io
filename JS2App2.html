@@ -21,6 +21,7 @@
 <input id="storgeQRcode2" type="button" value="storgeQRcode2保存图片到本地">
 <input id="getLyfCode" type="button" value="getLyfCode(来伊份授权登录)">
 <input id="getLyfCode1" type="button" value="getLyfCode(来伊份授权登录 无效)">
+<input id="saveImages" type="button" value="批量并保存图片">
 <IMG  id="imgtest" src="https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg">
 <input id="hideTitleBar01" type="button" value="隐藏显示原生头 隐藏">
 <input id="hideTitleBar02" type="button" value="隐藏显示原生头 显示">
@@ -237,6 +238,21 @@
         }
         appMessage(setShareContent2);
     }
+
+    document.getElementById('saveImages').onclick= function () {
+        var saveImages = {
+            "function": "saveImages",
+            "param": {
+                "images": ["https://static4.laiyifen.com/files/product-admin-web/image/1579744777302_5026.jpg",
+                    "https://static3.laiyifen.com/files/product-admin-web/image/1579744785293_4889.jpg",
+                    "https://static1.laiyifen.com/files/product-admin-web/image/1579744780267_9742.jpg",
+                    "https://static2.laiyifen.com/files/product-admin-web/image/1579744782883_1570.jpg",
+                    "https://static2.laiyifen.com/files/product-admin-web/image/1579744787907_4870.jpg"],
+            },
+            "callback": "callresult"
+        }
+        appMessage(saveImages);
+    }
     document.getElementById('storgeQRcode').onclick= function () {
         getUrlBase64('https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg', 'jpg', function (base64) {
             console.log(base64);//base64编码值
@@ -356,7 +372,10 @@
         }
     };
 
-
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?0c20bbce3f1bd24d17d0d46e432a39fa";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
 </script>
 </body>
 </html>
