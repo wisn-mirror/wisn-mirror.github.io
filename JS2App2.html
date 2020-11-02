@@ -33,6 +33,7 @@
 <input id="searchContact" type="text" value="150">
 
 <input id="jumpIMGroup" type="button" value="提供群id,原生跳转群页面">
+
 <input id="hideShare01" type="button" value="隐藏分享图标，右边直接为叉按钮 隐藏">
 <input id="hideShare02" type="button" value="隐藏分享图标，右边直接为叉按钮 显示">
 <input id="backGroundEvent" type="button" value="App回到后台或前台事件接口">
@@ -40,6 +41,11 @@
 <input id="registerBackListener" type="button" value="注册其他页面回来监听">
 <input id="clearBackListener" type="button" value="清空注册其他页面回来监听">
 <a href="lyf://h5?body={'url':'http://www.laiyifen.com'}"> test下级页面</a>
+
+<hr/>
+
+<input id="StatusBarLight" type="button" value="设置状态栏Light模式">
+<input id="StatusBarDark" type="button" value="设置状态栏Dark模式">
 <!--<input id="storgeQRcode2" type="button" value="storgeQRcode(图片方式)">-->
 <!--原生给H5提供方法：
 1. 隐藏显示原生头
@@ -70,6 +76,27 @@
         };
         appMessage(message);
     }
+
+    document.getElementById('StatusBarLight').onclick = function () {
+        var message = {
+            'function': 'StatusBarModel',
+            'param': {
+                'model': "light"
+            },
+        };
+        appMessage(message);
+    }
+
+    document.getElementById('StatusBarDark').onclick = function () {
+        var message = {
+            'function': 'StatusBarModel',
+            'param': {
+                'model': "dark"
+            },
+        };
+        appMessage(message);
+    }
+
     document.getElementById('clearBackListener').onclick= function () {
         var message = {
             'function': 'clearBackListener'
