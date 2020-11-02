@@ -206,6 +206,8 @@
                 'miniProgramPage': '/pages/detail/index?id=3000000000000126&mpId=1009090701000015'
             },
             'callback': 'callresult',
+            "shareSelectItem": "shareSelectItem",
+            "dismiss": "dismiss"
         };
         appMessage(message);
     }
@@ -219,7 +221,9 @@
                 "url160x160": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg",
                 "pic": "https://yun.duiba.com.cn/DS-tech/lb_tech/WechatIMG341.jpeg"
             },
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem",
+            "dismiss": "dismiss"
         }
         appMessage(setShareContent);
     }
@@ -234,7 +238,9 @@
                 "channel": ["IM", "Poster", "WechatMoments", "Wechat", "QQ", "QZone"],
                 "sharePicUrl": "https://static.laiyifen.com/goods-static/images/offlineShare.png"
             },
-            "callback": "callresult"
+            "callback": "callresult",
+            "shareSelectItem": "shareSelectItem",
+            "dismiss": "dismiss"
         }
         appMessage(setShareContent2);
     }
@@ -318,6 +324,15 @@
         alert('结果：'+JSON.stringify(result));
     }
 
+    function shareSelectItem(result) {
+        // alert('结果：'+json2str(result));
+        alert('shareSelectItem：' + JSON.stringify(result));
+    }
+
+    function dismiss() {
+        // alert('结果：'+json2str(result));
+        alert('dismiss：' );
+    }
     /**
      *
      * @param img html的img标签
