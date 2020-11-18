@@ -33,6 +33,7 @@
 <input id="searchContact" type="text" value="150">
 
 <input id="jumpIMGroup" type="button" value="提供群id,原生跳转群页面">
+<input id="selectAddress" type="button" value="选地址（登录后才能调用）">
 
 <input id="hideShare01" type="button" value="隐藏分享图标，右边直接为叉按钮 隐藏">
 <input id="hideShare02" type="button" value="隐藏分享图标，右边直接为叉按钮 显示">
@@ -67,6 +68,19 @@
             },
             'callback': 'callresult',
         };
+        appMessage(message);
+    }
+    document.getElementById('selectAddress').onclick= function () {
+        var message = {
+            'function': 'selectAddress',
+            'param': {
+                'selecttype': 1
+            },
+            'callback': 'callresult',
+        };
+       /* lyf://selectAddress?body={"selecttype":1}
+//selecttype，0 查看（可不传），1，商城选择地址*/
+        //返回callback addressid
         appMessage(message);
     }
     document.getElementById('registerBackListener').onclick= function () {
