@@ -74,12 +74,12 @@
         var message = {
             'function': 'selectAddress',
             'param': {
-                'selecttype': 1
+                'selecttype': 3
             },
             'callback': 'callresult',
         };
-       /* lyf://selectAddress?body={"selecttype":1}
-//selecttype，0 查看（可不传），1，商城选择地址*/
+        /* lyf://selectAddress?body={"selecttype":1}
+ //selecttype，0 查看（可不传），1，商城选择地址并保存选中，2,外卖选地址，3，选择地址返回id*/
         //返回callback addressid
         appMessage(message);
     }
