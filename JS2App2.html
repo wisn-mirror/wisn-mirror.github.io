@@ -78,8 +78,8 @@
             },
             'callback': 'callresult',
         };
-        /* lyf://selectAddress?body={"selecttype":1}
- //selecttype，0 查看（可不传），1，商城选择地址并保存选中，2,外卖选地址，3，选择地址返回id*/
+       /* lyf://selectAddress?body={"selecttype":1}
+//selecttype，0 查看（可不传），1，商城选择地址并保存选中，2,外卖选地址，3，选择地址返回id*/
         //返回callback addressid
         appMessage(message);
     }
@@ -248,7 +248,7 @@
             },
             'callback': 'callresult',
             "shareSelectItem": "shareSelectItem",
-            "dismiss": "dismiss"
+            "dialogvisibility": "dialogvisibility"
         };
         appMessage(message);
     }
@@ -264,7 +264,7 @@
             },
             "callback": "callresult",
             "shareSelectItem": "shareSelectItem",
-            "dismiss": "dismiss"
+            "dialogvisibility": "dialogvisibility"
         }
         appMessage(setShareContent);
     }
@@ -281,7 +281,7 @@
             },
             "callback": "callresult",
             "shareSelectItem": "shareSelectItem",
-            "dismiss": "dismiss"
+            "dialogvisibility": "dialogvisibility"
         }
         appMessage(setShareContent2);
     }
@@ -370,9 +370,9 @@
         alert('shareSelectItem：' + JSON.stringify(result));
     }
 
-    function dismiss() {
-        // alert('结果：'+json2str(result));
-        alert('dismiss：' );
+    function dialogvisibility(result) {
+        //show 1 hide 0
+        alert('dialogvisibility：'+result );
     }
     /**
      *
